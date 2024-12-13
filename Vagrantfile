@@ -19,6 +19,17 @@ Vagrant.configure("2") do |config|
       # Crear directorios para los sitios web
       mkdir -p /var/www/pedro/html
       mkdir -p /var/www/perfectweb/html
-    SHELL
+    
+      # Crear directorios para los sitios web
+      mkdir -p /var/www/pedro/html
+      mkdir -p /var/www/perfectweb/html
+
+      # Clonar el repositorio en /var/www/pedro/html
+      git clone https://github.com/cloudacademy/static-website-example /var/www/pedro/html
+
+      # Copiar el contenido del sitio perfecto desde /vagrant/html
+      cp -r /vagrant/html/* /var/www/perfectweb/html/
+      
+      SHELL
   end
 end
