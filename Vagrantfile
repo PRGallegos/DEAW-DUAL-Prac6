@@ -53,7 +53,13 @@ Vagrant.configure("2") do |config|
       cp /vagrant/nginx-selfsigned.conf /etc/nginx/snippets/self-signed.conf
       cp /vagrant/nginx-ssl-params.conf /etc/nginx/snippets/ssl-params.conf
 
-      
+      # Configurar páginas de error personalizadas
+      mkdir -p /var/www/error_pages
+      cp /vagrant/error_pages/404.html /var/www/error_pages/404.html
+
+      # Verificar y reiniciar NGINX
+      nginx -t
+      systemctl restart nginx
       
       SHELL
   end
