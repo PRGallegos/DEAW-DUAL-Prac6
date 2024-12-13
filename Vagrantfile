@@ -30,6 +30,17 @@ Vagrant.configure("2") do |config|
       # Copiar el contenido del sitio perfecto desde /vagrant/html
       cp -r /vagrant/html/* /var/www/perfectweb/html/
       
+      # Configurar permisos
+      chown -R www-data:www-data /var/www/pedro
+      chmod -R 755 /var/www/pedro
+      chown -R www-data:www-data /var/www/perfectweb
+      chmod -R 755 /var/www/perfectweb
+
+      # Configuración de NGINX
+      cp /vagrant/pedro /etc/nginx/sites-available/pedro
+      ln -sf /etc/nginx/sites-available/pedro /etc/nginx/sites-enabled/
+
+      
       SHELL
   end
 end
